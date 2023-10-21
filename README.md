@@ -53,7 +53,8 @@ ggplot(dat, aes(Age, Race)) +
           y = "Ethnicity") +
   scale_fill_gradientn(colours=c("white", "blue"))
 ```
-![heatmap](https://github.com/paoyingheng/nhanes/assets/44899774/71f7e0ff-fb7a-479e-ae0d-76f8c4039872)
+![heatmap](https://github.com/paoyingheng/nhanes/assets/44899774/06cce291-4780-4bba-9e73-1530e10785f4)
+
 
 ## Key Insights
 - The heatmap represents the distribution of BMI (Body Mass Index) across different age groups for various ethnicities.
