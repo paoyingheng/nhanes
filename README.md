@@ -1,6 +1,6 @@
 # Variation in BMI Distribution Across Different Ethnic Groups by Age
 
-This analysis is based on the NHANES (National Health and Nutrition Examination Survey) dataset for the years 2013-2014. The primary focus is to understand the distribution of Body Mass Index (BMI) across different age groups and ethnicities.
+This analysis is based on the National Health and Nutrition Examination Survey (NHANES) dataset for the years 2013-2014. The primary focus is to understand the distribution of Body Mass Index (BMI) across different age groups and ethnicities.
 
 ## Libraries and Dataset
 
