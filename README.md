@@ -49,7 +49,7 @@ ggplot(dat, aes(Age, Race)) +
   geom_raster(aes(fill = BMI)) + 
   labs(title="Variation in BMI Distribution Across Different Ethnic Groups by Age", x="Age (years)",
           y = "Ethnicity") +
-  scale_fill_gradientn(colours=c("white", "red"))
+  scale_fill_gradientn(colours=c("white", "blue"))
 ```
 ![heatmap](https://github.com/paoyingheng/nhanes/assets/44899774/71f7e0ff-fb7a-479e-ae0d-76f8c4039872)
 
@@ -62,3 +62,6 @@ ggplot(dat, aes(Age, Race)) +
 - The data does not show a consistent trend of BMI variation with age across the ethnic groups; however, certain age brackets in some ethnicities do display elevated BMI values.
 
 ## Conclusions
+In this analysis of the NHANES 2013-2014 dataset, we observed the variation of Body Mass Index (BMI) across different age groups and ethnicities. The visualizations highlighted the differences and similarities in BMI trends among various ethnic groups. It was evident that BMI values differed within certain age brackets across ethnicities. However, a consistent trend across all groups was not observed. This preliminary exploration provides insights into the diverse health profiles of the U.S. population and underscores the importance of tailored health interventions for different ethnic groups. Further in-depth studies can help in understanding the underlying factors affecting these trends, offering actionable insights for healthcare professionals and policymakers.
+
+For more details about the dataset, visit [NHANES](https://www.cdc.gov/nchs/nhanes/).
