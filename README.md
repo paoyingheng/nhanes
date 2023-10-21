@@ -18,13 +18,29 @@ library(tidyverse)
 The datasets "DEMO_H" (Demographics) and "BMX_H" (Body Measures) for the years 2013-2014 are loaded and merged based on the sequence number (SEQN). We filter out individuals below 18 years of age and remove missing BMI values. Additionally, we rename and recode certain variables for clarity.
 
 ```R
+nhanes_data <- nhanes_load_data("DEMO_H", "2013-2014") %>%
+  left_join(nhanes_load_data("BMX_H", "2013-2014"), by="SEQN") %>%
+  select(SEQN, wave = cycle, Age = RIDAGEYR, RIDRETH1, INDFMIN2, BMI = BMXBMI)
+
+# Filter and mutate
+data <- nhanes_data %>% 
+  filter(Age > 18, !is.na(BMI)) %>% 
+  mutate(
+    Race = recode_factor(RIDRETH1,
+                         `1` = "Mexican American",
+                         `2` = "Hispanic",
+                         `3` = "Non-Hispanic, White",
+                         `4` = "Non-Hispanic, Black",
+                         `5` = "Others")
+  )
+
 nhanes_data = nhanes_load_data("DEMO_H", "2013-2014") %>%
   select(SEQN, cycle, RIDAGEYR, RIDRETH1, INDFMIN2) %>%
   transmute(SEQN=SEQN, wave=cycle, Age=RIDAGEYR, RIDRETH1, INDFMIN2) %>%
   left_join(nhanes_load_data("BMX_H", "2013-2014"), by="SEQN") %>%
   select(SEQN, wave, Age, RIDRETH1, INDFMIN2, BMXBMI)
 
-dat = nhanes_data %>% 
+data <- nhanes_data %>% 
   filter(Age > 18, !is.na(BMXBMI)) %>% 
   rename(BMI = BMXBMI) %>% 
   mutate(Race = recode_factor(RIDRETH1,
