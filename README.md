@@ -19,28 +19,13 @@ The datasets "DEMO_H" (Demographics) and "BMX_H" (Body Measures) for the years 2
 
 ```R
 nhanes_data <- nhanes_load_data("DEMO_H", "2013-2014") %>%
-  left_join(nhanes_load_data("BMX_H", "2013-2014"), by="SEQN") %>%
-  select(SEQN, wave = cycle, Age = RIDAGEYR, RIDRETH1, INDFMIN2, BMI = BMXBMI)
-
-# Filter and mutate
-data <- nhanes_data %>% 
-  filter(Age > 18, !is.na(BMI)) %>% 
-  mutate(
-    Race = recode_factor(RIDRETH1,
-                         `1` = "Mexican American",
-                         `2` = "Hispanic",
-                         `3` = "Non-Hispanic, White",
-                         `4` = "Non-Hispanic, Black",
-                         `5` = "Others")
-  )
-
-nhanes_data = nhanes_load_data("DEMO_H", "2013-2014") %>%
   select(SEQN, cycle, RIDAGEYR, RIDRETH1, INDFMIN2) %>%
-  transmute(SEQN=SEQN, wave=cycle, Age=RIDAGEYR, RIDRETH1, INDFMIN2) %>%
+  mutate(SEQN=SEQN, wave=cycle, Age=RIDAGEYR, RIDRETH1, INDFMIN2) %>%
   left_join(nhanes_load_data("BMX_H", "2013-2014"), by="SEQN") %>%
   select(SEQN, wave, Age, RIDRETH1, INDFMIN2, BMXBMI)
 
-data <- nhanes_data %>% 
+# Filter and mutate
+data = nhanes_data %>% 
   filter(Age > 18, !is.na(BMXBMI)) %>% 
   rename(BMI = BMXBMI) %>% 
   mutate(Race = recode_factor(RIDRETH1,
@@ -55,7 +40,7 @@ data <- nhanes_data %>%
 Here's a glimpse of the structure of the dataset:
 
 ```R
-str(dat)
+str(data)
 ```
 ![str_nhanes](https://github.com/paoyingheng/nhanes/assets/44899774/4f31701e-d9fd-4105-9cc0-6f88c62bb83b)
 
