@@ -6,7 +6,7 @@ The primary focus of this analysis is to understand the distribution of Body Mas
 
 ## Libraries and Dataset
 
-We make use of the `RNHANES` package to fetch the NHANES data and the `tidyverse` suite for data manipulation and visualization.
+We make use of the `RNHANES` package to fetch the NHANES data and `tidyverse` for data manipulation and visualization.
 
 ```R
 library(RNHANES)
