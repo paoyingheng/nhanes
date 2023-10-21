@@ -39,37 +39,26 @@ Here's a glimpse of the structure of the dataset:
 ```R
 str(dat)
 ```
+![str_nhanes](https://github.com/paoyingheng/nhanes/assets/44899774/4f31701e-d9fd-4105-9cc0-6f88c62bb83b)
 
-Data Visualization
-Line Plot: Variation of BMI by Age and Ethnicity
-R
-Copy code
-ggplot(dat, aes(x = Age, y = BMI)) + 
-  geom_line(aes(color = Race))
-Line plot of BMI by Age and Ethnicity
+## Data Visualization
+### Heatmap: BMI Distribution by Age and Ethnicity
 
-Line Plot with Facets: Variation of BMI by Age for Each Ethnicity
-R
-Copy code
-ggplot(dat, aes(x = Age, y = BMI)) + 
-  geom_line(aes(color = Race)) +
-  facet_wrap(~Race) 
-Line plot with facets
-
-Heatmap: BMI Distribution by Age and Ethnicity
-R
-Copy code
+```R
 ggplot(dat, aes(Age, Race)) +
   geom_raster(aes(fill = BMI)) + 
   labs(title="Variation in BMI Distribution Across Different Ethnic Groups by Age", x="Age (years)",
           y = "Ethnicity") +
   scale_fill_gradientn(colours=c("white", "red"))
-Heatmap of BMI by Age and Ethnicity
+```
+![heatmap](https://github.com/paoyingheng/nhanes/assets/44899774/71f7e0ff-fb7a-479e-ae0d-76f8c4039872)
 
-Key Insights
-The heatmap represents the distribution of BMI (Body Mass Index) across different age groups for various ethnicities.
-Ethnicities represented include: "Others", "Non-Hispanic, Black", "Non-Hispanic, White", "Hispanic", and "Mexican American".
-The color gradient indicates the BMI values, with darker shades representing higher BMI.
-A majority of individuals, irrespective of ethnic group, appear to have a BMI ranging between 20 and 40, which is within the typical and overweight range.
-Some data points, especially within the "Non-Hispanic, Black" group, show a darker shade, indicating a higher BMI value, potentially within the obese range.
-The data does not show a consistent trend of BMI variation with age across the ethnic groups; however, certain age brackets in some ethnicities do display elevated BMI values.
+## Key Insights
+- The heatmap represents the distribution of BMI (Body Mass Index) across different age groups for various ethnicities.
+- Ethnicities represented include: "Others", "Non-Hispanic, Black", "Non-Hispanic, White", "Hispanic", and "Mexican American".
+- The color gradient indicates the BMI values, with darker shades representing higher BMI.
+- A majority of individuals, irrespective of ethnic group, appear to have a BMI ranging between 20 and 40, which is within the typical and overweight range.
+- Some data points, especially within the "Non-Hispanic, Black" group, show a darker shade, indicating a higher BMI value, potentially within the obese range.
+- The data does not show a consistent trend of BMI variation with age across the ethnic groups; however, certain age brackets in some ethnicities do display elevated BMI values.
+
+## Conclusions
